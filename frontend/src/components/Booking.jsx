@@ -26,7 +26,7 @@ const Booking = () => {
     
     try {
       // 1️⃣ Create an order on the backend
-      const orderResponse = await axios.post("http://localhost:5000/api/payment/create-order", {
+      const orderResponse = await axios.post("https://vehicleofvedant.onrender.com/api/payment/create-order", {
         amount: vehicle.price * 100, // Convert to paisa
         currency: "INR",
       });
@@ -45,7 +45,7 @@ const Booking = () => {
         handler: async function (response) {
           // 3️⃣ Handle successful payment
           try {
-            await axios.post("http://localhost:5000/api/payment/verify-payment", {
+            await axios.post("https://vehicleofvedant.onrender.com/api/payment/verify-payment", {
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_order_id: response.razorpay_order_id,
               razorpay_signature: response.razorpay_signature,
