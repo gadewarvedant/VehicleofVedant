@@ -19,7 +19,7 @@ const AdminDashboard = () => {
 
   const fetchVehicles = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/products");
+      const response = await axios.get("https://vehicleofvedant.onrender.com/api/products");
       setVehicleData(response.data);
     } catch (error) {
       console.error("Error fetching vehicles:", error);
@@ -43,11 +43,11 @@ const AdminDashboard = () => {
     try {
       if (editData) {
         // Update vehicle
-        await axios.put(`http://localhost:5000/api/products/${editData._id}`, vehicleForm);
+        await axios.put(`https://vehicleofvedant.onrender.com/api/products/${editData._id}`, vehicleForm);
         alert("Vehicle updated successfully");
       } else {
         // Add new vehicle
-        await axios.post("http://localhost:5000/api/products", vehicleForm);
+        await axios.post("https://vehicleofvedant.onrender.com/api/products", vehicleForm);
         alert("Vehicle added successfully");
       }
       fetchVehicles();
@@ -63,7 +63,7 @@ const AdminDashboard = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this vehicle?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/products/${id}`);
+        await axios.delete(`https://vehicleofvedant.onrender.com/api/products/${id}`);
         alert("Vehicle deleted successfully");
         fetchVehicles();
       } catch (error) {
